@@ -7,7 +7,7 @@
 
 ```
 composer create-project --prefer-dist laravel/laravel ezadev-admin "5.5.*"
-composer require ezadev/admin
+composer require ezadev/admin "^0.1"
 php artisan vendor:publish --provider="Ezadev\Admin\AdminServiceProvider"
 ```
 
