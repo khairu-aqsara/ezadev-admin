@@ -26,8 +26,8 @@
 </style>
 
 <div class="title">
-    Ezadev-admin
+    {{ config('admin.name') }}
 </div>
 <div class="links">
-    <a href="#" target="_blank">Github</a>
+    <a href="https://github.com/khairu-aqsara/ezadev-admin" target="_blank">Github</a>
 </div>
