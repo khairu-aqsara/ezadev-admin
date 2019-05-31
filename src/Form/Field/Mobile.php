@@ -5,7 +5,7 @@ namespace Ezadev\Admin\Form\Field;
 class Mobile extends Text
 {
     protected static $js = [
-        '/vendor/laravel-admin/AdminLTE/plugins/input-mask/jquery.inputmask.bundle.min.js',
+        '/vendor/ezadev-admin/AdminLTE/plugins/input-mask/jquery.inputmask.bundle.min.js',
     ];
 
     /**

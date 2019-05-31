@@ -78,7 +78,7 @@ class MakeCommand extends GeneratorCommand
      */
     protected function output($modelName)
     {
-        $this->alert("laravel-admin controller code for model [{$modelName}]");
+        $this->alert("ezadev-admin controller code for model [{$modelName}]");
 
         $this->info($this->generator->generateGrid());
         $this->info($this->generator->generateShow());

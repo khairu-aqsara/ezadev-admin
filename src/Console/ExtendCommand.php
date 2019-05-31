@@ -20,7 +20,7 @@ class ExtendCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Build a Laravel-admin extension';
+    protected $description = 'Build a ezadev-admin extension';
 
     /**
      * @var string

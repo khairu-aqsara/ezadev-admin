@@ -21,11 +21,11 @@ class Admin
     use HasAssets;
 
     /**
-     * The Laravel admin version.
+     * The Ezadev admin version.
      *
      * @var string
      */
-    const VERSION = '1.6.15';
+    const VERSION = '0.1';
 
     /**
      * @var Navbar
@@ -63,13 +63,13 @@ class Admin
     protected static $bootedCallbacks = [];
 
     /**
-     * Returns the long version of Laravel-admin.
+     * Returns the long version of ezadev-admin.
      *
      * @return string The long application version
      */
     public static function getLongVersion()
     {
-        return sprintf('Laravel-admin <comment>version</comment> <info>%s</info>', self::VERSION);
+        return sprintf('ezadev-admin <comment>version</comment> <info>%s</info>', self::VERSION);
     }
 
     /**
@@ -276,7 +276,7 @@ class Admin
     }
 
     /**
-     * Register the laravel-admin builtin routes.
+     * Register the ezadev-admin builtin routes.
      *
      * @return void
      *
@@ -288,7 +288,7 @@ class Admin
     }
 
     /**
-     * Register the laravel-admin builtin routes.
+     * Register the ezadev-admin builtin routes.
      *
      * @return void
      */

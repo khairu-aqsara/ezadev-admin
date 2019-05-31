@@ -20,7 +20,7 @@ class ImportCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Import a Laravel-admin extension';
+    protected $description = 'Import a ezadev-admin extension';
 
     /**
      * Execute the console command.

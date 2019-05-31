@@ -3,19 +3,19 @@
 return [
 
     /*
-     * Laravel-admin name.
+     * ezadev-admin name.
      */
-    'name' => 'Laravel-admin',
+    'name' => 'ezadev-admin',
 
     /*
      * Logo in admin panel header.
      */
-    'logo' => '<b>Laravel</b> admin',
+    'logo' => '<b>Ezadev</b> admin',
 
     /*
      * Mini-logo in admin panel header.
      */
-    'logo-mini' => '<b>La</b>',
+    'logo-mini' => '<b>EZ</b>',
 
     /*
      * Route configuration.
@@ -30,12 +30,12 @@ return [
     ],
 
     /*
-     * Laravel-admin install directory.
+     * ezadev-admin install directory.
      */
     'directory' => app_path('Admin'),
 
     /*
-     * Laravel-admin html title.
+     * ezadev-admin html title.
      */
     'title' => 'Admin',
 
@@ -45,7 +45,7 @@ return [
     'secure' => false,
 
     /*
-     * Laravel-admin auth setting.
+     * ezadev-admin auth setting.
      */
     'auth' => [
         'guards' => [
@@ -64,7 +64,7 @@ return [
     ],
 
     /*
-     * Laravel-admin upload setting.
+     * ezadev-admin upload setting.
      */
     'upload' => [
 
@@ -77,7 +77,7 @@ return [
     ],
 
     /*
-     * Laravel-admin database setting.
+     * ezadev-admin database setting.
      */
     'database' => [
 
@@ -109,7 +109,7 @@ return [
     ],
 
     /*
-     * By setting this option to open or close operation log in laravel-admin.
+     * By setting this option to open or close operation log in ezadev-admin.
      */
     'operation_log' => [
 

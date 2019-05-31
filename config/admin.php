@@ -4,10 +4,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin name
+    | ezadev-admin name
     |--------------------------------------------------------------------------
     |
-    | This value is the name of laravel-admin, This setting is displayed on the
+    | This value is the name of ezadev-admin, This setting is displayed on the
     | login page.
     |
     */
@@ -15,7 +15,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin logo
+    | ezadev-admin logo
     |--------------------------------------------------------------------------
     |
     | The logo of all admin pages. You can also set it as an image by using a
@@ -26,7 +26,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin mini logo
+    | ezadev-admin mini logo
     |--------------------------------------------------------------------------
     |
     | The logo of all admin pages when the sidebar menu is collapsed. You can
@@ -38,17 +38,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin bootstrap setting
+    | ezadev-admin bootstrap setting
     |--------------------------------------------------------------------------
     |
-    | This value is the path of laravel-admin bootstrap file.
+    | This value is the path of ezadev-admin bootstrap file.
     |
     */
     'bootstrap' => app_path('Admin/bootstrap.php'),
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin route settings
+    | ezadev-admin route settings
     |--------------------------------------------------------------------------
     |
     | The routing configuration of the admin page, including the path prefix,
@@ -67,7 +67,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin install directory
+    | ezadev-admin install directory
     |--------------------------------------------------------------------------
     |
     | The installation directory of the controller and routing configuration
@@ -79,7 +79,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin html title
+    | ezadev-admin html title
     |--------------------------------------------------------------------------
     |
     | Html title for all pages.
@@ -99,7 +99,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin auth setting
+    | ezadev-admin auth setting
     |--------------------------------------------------------------------------
     |
     | Authentication settings for all admin pages. Include an authentication
@@ -141,7 +141,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin upload setting
+    | ezadev-admin upload setting
     |--------------------------------------------------------------------------
     |
     | File system configuration for form upload files and images, including
@@ -162,10 +162,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin database settings
+    | ezadev-admin database settings
     |--------------------------------------------------------------------------
     |
-    | Here are database settings for laravel-admin builtin model & tables.
+    | Here are database settings for ezadev-admin builtin model & tables.
     |
     */
     'database' => [
@@ -202,7 +202,7 @@ return [
     | User operation log setting
     |--------------------------------------------------------------------------
     |
-    | By setting this option to open or close operation log in laravel-admin.
+    | By setting this option to open or close operation log in ezadev-admin.
     |
     */
     'operation_log' => [
@@ -233,7 +233,7 @@ return [
     | Set a default avatar for newly created users.
     |
     */
-    'default_avatar' => '/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg',
+    'default_avatar' => '/vendor/ezadev-admin/AdminLTE/dist/img/user2-160x160.jpg',
 
     /*
     |--------------------------------------------------------------------------
@@ -290,7 +290,7 @@ return [
     | Show version at footer
     |--------------------------------------------------------------------------
     |
-    | Whether to display the version number of laravel-admin at the footer of
+    | Whether to display the version number of ezadev-admin at the footer of
     | each page
     |
     */
@@ -361,7 +361,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | You can find all available extensions here
-    | https://github.com/laravel-admin-extensions.
+    | https://github.com/ezadev-admin-extensions.
     |
     */
     'extensions' => [

@@ -22,9 +22,9 @@ class IndexTest extends TestCase
             ->see('Laravel version')
 
             ->see('Available extensions')
-            ->seeLink('laravel-admin-ext/helpers', 'https://github.com/laravel-admin-extensions/helpers')
-            ->seeLink('laravel-admin-ext/backup', 'https://github.com/laravel-admin-extensions/backup')
-            ->seeLink('laravel-admin-ext/media-manager', 'https://github.com/laravel-admin-extensions/media-manager')
+            ->seeLink('ezadev-admin-ext/helpers', 'https://github.com/ezadev-admin-extensions/helpers')
+            ->seeLink('ezadev-admin-ext/backup', 'https://github.com/ezadev-admin-extensions/backup')
+            ->seeLink('ezadev-admin-ext/media-manager', 'https://github.com/ezadev-admin-extensions/media-manager')
 
             ->see('Dependencies')
             ->see('php')

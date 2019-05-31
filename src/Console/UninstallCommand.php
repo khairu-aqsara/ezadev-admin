@@ -27,13 +27,13 @@ class UninstallCommand extends Command
      */
     public function handle()
     {
-        if (!$this->confirm('Are you sure to uninstall laravel-admin?')) {
+        if (!$this->confirm('Are you sure to uninstall ezadev-admin?')) {
             return;
         }
 
         $this->removeFilesAndDirectories();
 
-        $this->line('<info>Uninstalling laravel-admin!</info>');
+        $this->line('<info>Uninstalling ezadev-admin!</info>');
     }
 
     /**
@@ -44,7 +44,7 @@ class UninstallCommand extends Command
     protected function removeFilesAndDirectories()
     {
         $this->laravel['files']->deleteDirectory(config('admin.directory'));
-        $this->laravel['files']->deleteDirectory(public_path('vendor/laravel-admin/'));
+        $this->laravel['files']->deleteDirectory(public_path('vendor/ezadev-admin/'));
         $this->laravel['files']->delete(config_path('admin.php'));
     }
 }
