@@ -39,4 +39,10 @@ class Dashboard
 
         return view('admin::dashboard.environment', compact('envs'));
     }
+
+    public static function additionalDashboard()
+    {
+      $welcome = "Welcome Administrator";
+      return view('admin::dashboard.additional', compact('welcome'));
+    }
 }
