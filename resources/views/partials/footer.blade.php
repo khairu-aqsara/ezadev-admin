@@ -14,5 +14,5 @@
 
     </div>
     <!-- Default to the left -->
-    <strong>Powered by <a href="https://github.com/z-song/ezadev-admin" target="_blank">ezadev-admin</a></strong>
+    <strong>Powered by <a href="https://github.com/khairu-aqsara/ezadev-admin" target="_blank">ezadev-admin</a></strong>
 </footer>
