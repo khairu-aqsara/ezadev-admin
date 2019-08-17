@@ -52,6 +52,11 @@ trait UploadField
     protected $retainable = false;
 
     /**
+     * @var bool
+     */
+    protected $downloadable = true;
+
+    /**
      * Configuration for setting up file actions for newly selected file thumbnails in the preview window.
      *
      * @var array
@@ -67,6 +72,21 @@ trait UploadField
      * @var string
      */
     protected $storagePermission;
+
+    /**
+     * @var array
+     */
+    protected $fileTypes = [
+        'image'  => '/^(gif|png|jpe?g|svg)$/i',
+        'html'   => '/^(htm|html)$/i',
+        'office' => '/^(docx?|xlsx?|pptx?|pps|potx?)$/i',
+        'gdocs'  => '/^(docx?|xlsx?|pptx?|pps|potx?|rtf|ods|odt|pages|ai|dxf|ttf|tiff?|wmf|e?ps)$/i',
+        'text'   => '/^(txt|md|csv|nfo|ini|json|php|js|css|ts|sql)$/i',
+        'video'  => '/^(og?|mp4|webm|mp?g|mov|3gp)$/i',
+        'audio'  => '/^(og?|mp3|mp?g|wav)$/i',
+        'pdf'    => '/^(pdf)$/i',
+        'flash'  => '/^(swf)$/i',
+    ];
 
     /**
      * Initialize the storage instance.
@@ -92,6 +112,7 @@ trait UploadField
             'cancelLabel'          => trans('admin.cancel'),
             'showRemove'           => false,
             'showUpload'           => false,
+            'showCancel'           => false,
             'dropZoneEnabled'      => false,
             'deleteExtraData'      => [
                 $this->formatName($this->column) => static::FILE_DELETE_FLAG,
@@ -120,6 +141,52 @@ trait UploadField
         $initialPreviewConfig = $this->initialPreviewConfig();
 
         $this->options(compact('initialPreviewConfig'));
+    }
+
+    /**
+     * @return array|bool
+     */
+    protected function guessPreviewType($file)
+    {
+        $filetype = 'other';
+        $ext = strtok(strtolower(pathinfo($file, PATHINFO_EXTENSION)), '?');
+
+        foreach ($this->fileTypes as $type => $pattern) {
+            if (preg_match($pattern, $ext) === 1) {
+                $filetype = $type;
+                break;
+            }
+        }
+
+        $extra = ['type' => $filetype];
+
+        if ($filetype == 'video') {
+            $extra['filetype'] = "video/{$ext}";
+        }
+
+        if ($filetype == 'audio') {
+            $extra['filetype'] = "audio/{$ext}";
+        }
+
+        if ($this->downloadable) {
+            $extra['downloadUrl'] = $this->objectUrl($file);
+        }
+
+        return $extra;
+    }
+
+    /**
+     * Indicates if the underlying field is downloadable.
+     *
+     * @param bool $downloadable
+     *
+     * @return $this
+     */
+    public function downloadable($downloadable = true)
+    {
+        $this->downloadable = $downloadable;
+
+        return $this;
     }
 
     /**
@@ -397,7 +464,15 @@ trait UploadField
      */
     public function destroy()
     {
-        if (!$this->retainable && $this->storage->exists($this->original)) {
+        if ($this->retainable) {
+            return;
+        }
+
+        if (method_exists($this, 'destroyThumbnail')) {
+            $this->destroyThumbnail();
+        }
+
+        if ($this->storage->exists($this->original)) {
             $this->storage->delete($this->original);
         }
     }

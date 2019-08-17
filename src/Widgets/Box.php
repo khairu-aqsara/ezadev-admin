@@ -2,7 +2,6 @@
 
 namespace Ezadev\Admin\Widgets;
 
-use Ezadev\Admin\Admin;
 use Illuminate\Contracts\Support\Renderable;
 
 class Box extends Widget implements Renderable

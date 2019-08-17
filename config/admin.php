@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Ezadev-admin',
+    'name' => 'ezadev-admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>Ezadev</b> admin',
+    'logo' => '<b>ezadev-admin</b> admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<b>EZ</b>',
+    'logo-mini' => '<b>Ez</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -111,6 +111,8 @@ return [
     'auth' => [
 
         'controller' => App\Admin\Controllers\AuthController::class,
+
+        'guard' => 'admin',
 
         'guards' => [
             'admin' => [
@@ -227,6 +229,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Indicates whether to check route permission.
+    |--------------------------------------------------------------------------
+    */
+    'check_route_permission' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Indicates whether to check menu roles.
+    |--------------------------------------------------------------------------
+    */
+    'check_menu_roles'       => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | User default avatar
     |--------------------------------------------------------------------------
     |
@@ -259,7 +275,7 @@ return [
     |    "skin-red", "skin-red-light", "skin-black", "skin-black-light".
     |
     */
-    'skin' => 'skin-green',
+    'skin' => 'skin-blue-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -343,7 +359,21 @@ return [
     | Enable/Disable sidebar menu search
     |--------------------------------------------------------------------------
     */
-    'enable_menu_search' => false,
+    'enable_menu_search' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Alert message that will displayed on top of the page.
+    |--------------------------------------------------------------------------
+    */
+    'top_alert' => '',
+
+    /*
+    |--------------------------------------------------------------------------
+    | The global Grid action display class.
+    |--------------------------------------------------------------------------
+    */
+    'grid_action_class' => \Ezadev\Admin\Grid\Displayers\DropdownActions::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -361,7 +391,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | You can find all available extensions here
-    | https://github.com/ezadev-admin-extensions.
+    | https://github.com/khairu-aqsara/ezadev-admin
     |
     */
     'extensions' => [
