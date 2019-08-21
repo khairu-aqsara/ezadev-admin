@@ -23,5 +23,5 @@ then run `php artisan serve` Open http://localhost:8000/admin/ in browser,use us
 there is an small update for this, but haven't test it yet on large scale, 
 
 ```
-composer require ezadev/admin:ev-update-agustus
+composer require ezadev/admin:dev-update-agustus
 ```
