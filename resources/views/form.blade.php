@@ -45,4 +45,3 @@
 <!-- /.box-footer -->
     {!! $form->close() !!}
 </div>
-
