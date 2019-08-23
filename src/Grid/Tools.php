@@ -2,6 +2,7 @@
 
 namespace Ezadev\Admin\Grid;
 
+use Ezadev\Admin\Actions\GridAction;
 use Ezadev\Admin\Grid;
 use Ezadev\Admin\Grid\Tools\AbstractTool;
 use Ezadev\Admin\Grid\Tools\BatchActions;
@@ -58,6 +59,10 @@ class Tools implements Renderable
      */
     public function append($tool)
     {
+        if ($tool instanceof GridAction) {
+            $tool->setGrid($this->grid);
+        }
+
         $this->tools->push($tool);
 
         return $this;

@@ -16,6 +16,14 @@ class ColumnSelector extends AbstractTool
     protected $grid;
 
     /**
+     * @var array
+     */
+    protected static $ignoredColumns = [
+        Grid\Column::SELECT_COLUMN_NAME,
+        Grid\Column::ACTION_COLUMN_NAME,
+    ];
+
+    /**
      * Create a new Export button instance.
      *
      * @param Grid $grid
@@ -69,7 +77,7 @@ HTML;
         &nbsp;
         <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" role="menu" style="padding: 10px;">
+    <ul class="dropdown-menu" role="menu" style="padding: 10px;height: auto;max-height: 500px;overflow-x: hidden;">
         <li>
             <ul style='padding: 0;'>
                 {$lists}
@@ -77,7 +85,7 @@ HTML;
         </li>
         <li class="divider"></li>
         <li class="text-right">
-            <button class="btn btn-sm btn-defalut column-select-all">{$btns['all']}</button>&nbsp;&nbsp;
+            <button class="btn btn-sm btn-default column-select-all">{$btns['all']}</button>&nbsp;&nbsp;
             <button class="btn btn-sm btn-primary column-select-submit">{$btns['submit']}</button>
         </li>
     </ul>
@@ -93,12 +101,34 @@ EOT;
         return $this->grid->columns()->map(function (Grid\Column $column) {
             $name = $column->getName();
 
-            if (in_array($name, [Grid\Column::SELECT_COLUMN_NAME, Grid\Column::ACTION_COLUMN_NAME])) {
+            if ($this->isColumnIgnored($name)) {
                 return;
             }
 
             return [$name => $column->getLabel()];
         })->filter()->collapse();
+    }
+
+    /**
+     * Is column ignored in column selector.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    protected function isColumnIgnored($name)
+    {
+        return in_array($name, static::$ignoredColumns);
+    }
+
+    /**
+     * Ignore a column to display in column selector.
+     *
+     * @param string|array $name
+     */
+    public static function ignore($name)
+    {
+        static::$ignoredColumns = array_merge(static::$ignoredColumns, (array) $name);
     }
 
     /**

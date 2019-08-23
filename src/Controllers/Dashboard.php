@@ -40,9 +40,17 @@ class Dashboard
         return view('admin::dashboard.environment', compact('envs'));
     }
 
-    public static function additionalDashboard()
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public static function dependencies()
     {
-      $welcome = "Welcome Administrator";
-      return view('admin::dashboard.additional', compact('welcome'));
+        $json = file_get_contents(base_path('composer.json'));
+
+        $dependencies = json_decode($json, true)['require'];
+
+        Admin::script("$('.dependencies').slimscroll({height:'510px',size:'3px'});");
+
+        return view('admin::dashboard.dependencies', compact('dependencies'));
     }
 }

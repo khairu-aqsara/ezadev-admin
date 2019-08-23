@@ -21,11 +21,11 @@ class Admin
     use HasAssets;
 
     /**
-     * The Ezadev admin version.
+     * The ezadev-admin admin version.
      *
      * @var string
      */
-    const VERSION = '0.5';
+    const VERSION = '1.7.3';
 
     /**
      * @var Navbar
@@ -236,13 +236,25 @@ class Admin
     }
 
     /**
-     * Get current login user.
+     * Get the currently authenticated user.
      *
-     * @return mixed
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */
     public function user()
     {
-        return Auth::guard('admin')->user();
+        return $this->guard()->user();
+    }
+
+    /**
+     * Attempt to get the guard from the local cache.
+     *
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
+     */
+    public function guard()
+    {
+        $guard = config('admin.auth.guard') ?: 'admin';
+
+        return Auth::guard($guard);
     }
 
     /**
@@ -312,6 +324,7 @@ class Admin
                 $router->resource('auth/logs', 'LogController', ['only' => ['index', 'destroy']])->names('admin.auth.logs');
 
                 $router->post('_handle_form_', 'HandleController@handleForm')->name('admin.handle-form');
+                $router->post('_handle_action_', 'HandleController@handleAction')->name('admin.handle-action');
             });
 
             $authController = config('admin.auth.controller', AuthController::class);
@@ -361,20 +374,22 @@ class Admin
     {
         $this->fireBootingCallbacks();
 
-        Form::registerBuiltinFields();
-
-        Grid::registerColumnDisplayer();
-
-        Grid\Filter::registerFilters();
-
         require config('admin.bootstrap', admin_path('bootstrap.php'));
 
+        $this->addAdminAssets();
+
+        $this->fireBootedCallbacks();
+    }
+
+    /**
+     * Add JS & CSS assets to pages.
+     */
+    protected function addAdminAssets()
+    {
         $assets = Form::collectFieldAssets();
 
         self::css($assets['css']);
         self::js($assets['js']);
-
-        $this->fireBootedCallbacks();
     }
 
     /**

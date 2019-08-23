@@ -1,4 +1,4 @@
-<input type="checkbox" class="{{ $selectAllName }}" />&nbsp;
+{{--<input type="checkbox" class="{{ $selectAllName }}" />&nbsp;--}}
 
 @if(!$isHoldSelectAllCheckbox)
 <div class="btn-group {{$selectAllName}}-btn" style="display:none;margin-right: 5px;">
@@ -7,10 +7,16 @@
         <span class="caret"></span>
         <span class="sr-only">Toggle Dropdown</span>
     </button>
+    @if(!$actions->isEmpty())
     <ul class="dropdown-menu" role="menu">
         @foreach($actions as $action)
-            <li><a href="#" class="{{ $action->getElementClass(false) }}">{!! $action->render() !!} </a></li>
+            @if($action instanceof \Ezadev\Admin\Actions\BatchAction)
+                <li>{!! $action->render() !!}</li>
+            @else
+                <li><a href="#" class="{{ $action->getElementClass(false) }}">{!! $action->render() !!} </a></li>
+            @endif
         @endforeach
     </ul>
+    @endif
 </div>
 @endif

@@ -6,6 +6,7 @@
         font-weight: 100;
         display: block;
         text-align: center;
+        margin: 20px 0 10px 0px;
     }
 
     .links {
@@ -25,8 +26,9 @@
 </style>
 
 <div class="title">
-    {{ config('admin.name') }}
+    ezadev-admin
 </div>
 <div class="links">
     <a href="https://github.com/khairu-aqsara/ezadev-admin" target="_blank">Github</a>
+    <a href="https://khairu-aqsara.gitbook.io/ezadev-admin/"  target="_blank">Documentation</a>
 </div>

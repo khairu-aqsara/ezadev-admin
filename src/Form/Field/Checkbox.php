@@ -8,6 +8,8 @@ class Checkbox extends MultipleSelect
 {
     protected $inline = true;
 
+    protected $canCheckAll = false;
+
     protected static $css = [
         '/vendor/ezadev-admin/AdminLTE/plugins/iCheck/all.css',
     ];
@@ -34,6 +36,18 @@ class Checkbox extends MultipleSelect
         } else {
             $this->options = (array) $options;
         }
+
+        return $this;
+    }
+
+    /**
+     * Add a checkbox above this component, so you can select all checkboxes by click on it.
+     *
+     * @return $this
+     */
+    public function canCheckAll()
+    {
+        $this->canCheckAll = true;
 
         return $this;
     }
@@ -87,7 +101,26 @@ class Checkbox extends MultipleSelect
     {
         $this->script = "$('{$this->getElementClassSelector()}').iCheck({checkboxClass:'icheckbox_minimal-blue'});";
 
-        $this->addVariables(['checked' => $this->checked, 'inline' => $this->inline]);
+        $this->addVariables([
+            'checked'     => $this->checked,
+            'inline'      => $this->inline,
+            'canCheckAll' => $this->canCheckAll,
+        ]);
+
+        if ($this->canCheckAll) {
+            $checkAllClass = uniqid('check-all-');
+
+            $this->script .= <<<SCRIPT
+$('.{$checkAllClass}').iCheck({checkboxClass:'icheckbox_minimal-blue'}).on('ifChanged', function () {
+    if (this.checked) {
+        $('{$this->getElementClassSelector()}').iCheck('check');
+    } else {
+        $('{$this->getElementClassSelector()}').iCheck('uncheck');
+    }
+})
+SCRIPT;
+            $this->addVariables(['checkAllClass' => $checkAllClass]);
+        }
 
         return parent::render();
     }
