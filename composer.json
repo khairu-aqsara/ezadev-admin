@@ -1,5 +1,5 @@
 {
-    "name": "ezadevadmin/admin",
+    "name": "ezadev/admin",
     "description": "Ezadev admin",
     "type": "library",
     "keywords": ["laravel", "admin", "grid", "form"],
