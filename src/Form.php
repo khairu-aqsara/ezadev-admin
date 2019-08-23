@@ -191,7 +191,7 @@ class Form implements Renderable
      *
      * @var array
      */
-    protected $ignored = [];
+    protected $ignored = ['after-save'];
 
     /**
      * Collected field assets.
