@@ -1,5 +1,5 @@
 ### Requirments
-* PHP >= 7.0.0
+* PHP >= 7.1.0
 * Laravel >= 5.5.0
 * Fileinfo PHP Extension
 
