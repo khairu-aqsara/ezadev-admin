@@ -25,7 +25,3 @@ there is an small update for this, but haven't test it yet on large scale,
 ```
 composer require ezadev/admin:dev-update-agustus
 ```
-
-## NEW FEATURE
-* Penambahan Auto Row Number pada grid
-* Perbaikan View untuk Detail
