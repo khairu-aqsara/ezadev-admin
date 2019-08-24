@@ -46,6 +46,11 @@ class Column
 
     const ACTION_COLUMN_NAME = '__actions__';
 
+<<<<<<< HEAD
+=======
+    const NUMBER_COLUMN_NAME = '__number_selector__';
+
+>>>>>>> origin/local-dev
     /**
      * @var Grid
      */

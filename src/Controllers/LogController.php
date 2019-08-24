@@ -25,7 +25,11 @@ class LogController extends AdminController
 
         $grid->model()->orderBy('id', 'DESC');
 
+<<<<<<< HEAD
         $grid->column('id', 'ID')->sortable();
+=======
+        //$grid->column('id', 'ID')->sortable();
+>>>>>>> origin/local-dev
         $grid->column('user.name', 'User');
         $grid->column('method')->display(function ($method) {
             $color = Arr::get(OperationLog::$methodColors, $method, 'grey');

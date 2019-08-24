@@ -27,8 +27,12 @@ class PermissionController extends AdminController
         $permissionModel = config('admin.database.permissions_model');
 
         $grid = new Grid(new $permissionModel());
+<<<<<<< HEAD
 
         $grid->column('id', 'ID')->sortable();
+=======
+        //$grid->column('id', 'ID')->sortable();
+>>>>>>> origin/local-dev
         $grid->column('slug', trans('admin.slug'));
         $grid->column('name', trans('admin.name'));
 
@@ -79,11 +83,16 @@ class PermissionController extends AdminController
         $permissionModel = config('admin.database.permissions_model');
 
         $show = new Show($permissionModel::findOrFail($id));
+<<<<<<< HEAD
 
         $show->field('id', 'ID');
         $show->field('slug', trans('admin.slug'));
         $show->field('name', trans('admin.name'));
 
+=======
+        $show->field('slug', trans('admin.slug'));
+        $show->field('name', trans('admin.name'));
+>>>>>>> origin/local-dev
         $show->field('http_path', trans('admin.route'))->unescape()->as(function ($path) {
             return collect(explode("\r\n", $path))->map(function ($path) {
                 $method = $this->http_method ?: ['ANY'];

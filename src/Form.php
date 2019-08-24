@@ -191,7 +191,11 @@ class Form implements Renderable
      *
      * @var array
      */
+<<<<<<< HEAD
     protected $ignored = ['after-save'];
+=======
+    protected $ignored = [];
+>>>>>>> origin/local-dev
 
     /**
      * Collected field assets.
