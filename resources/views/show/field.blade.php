@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<div class="form-group ">
-    <label class="col-sm-{{$width['label']}} control-label">{{ $label }}</label>
-    <div class="col-sm-{{$width['field']}}">
-=======
 <style>
 .frow {
   display: -webkit-box;
@@ -22,7 +17,6 @@
     <div style="width:30px">:</div>
     <div class="col-sm-{{$width['field']}}">
         <span>
->>>>>>> origin/local-dev
         @if($wrapped)
             @if($escape)
                 {{ $content }}&nbsp;
@@ -36,9 +30,6 @@
                 {!! $content !!}
             @endif
         @endif
-<<<<<<< HEAD
-=======
         </span>
->>>>>>> origin/local-dev
     </div>
 </div>

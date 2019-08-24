@@ -17,12 +17,6 @@ After run command you can find config file in `config/admin.php`, in this file y
 php artisan admin:install
 ```
 
-<<<<<<< HEAD
-then run `php artisan serve` Open http://localhost:8000/admin/ in browser,use 
-
-```php
-username admin and password admin
-=======
 then run `php artisan serve` Open http://localhost:8000/admin/ in browser,use username admin and password admin to login.
 
 ### For Development
@@ -30,5 +24,4 @@ there is an small update for this, but haven't test it yet on large scale,
 
 ```
 composer require ezadev/admin:dev-update-agustus
->>>>>>> origin/local-dev
 ```

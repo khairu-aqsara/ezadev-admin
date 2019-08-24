@@ -546,8 +546,6 @@ class Grid
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Prepend number column for grid.
      *
      * @return void
@@ -560,17 +558,13 @@ class Grid
     }
 
     /**
->>>>>>> origin/local-dev
      * Add row selector columns and action columns before and after the grid.
      *
      * @return void
      */
     protected function addDefaultColumns()
     {
-<<<<<<< HEAD
-=======
         $this->prependNumberSelectorColumn();
->>>>>>> origin/local-dev
         $this->prependRowSelectorColumn();
 
         $this->appendActionsColumn();
