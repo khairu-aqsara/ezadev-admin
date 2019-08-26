@@ -18,10 +18,3 @@ php artisan admin:install
 ```
 
 then run `php artisan serve` Open http://localhost:8000/admin/ in browser,use username admin and password admin to login.
-
-### For Development
-there is an small update for this, but haven't test it yet on large scale, 
-
-```
-composer require ezadev/admin:dev-update-agustus
-```
