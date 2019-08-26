@@ -7,7 +7,7 @@ class NumberSelector extends AbstractDisplayer
 {
     public function display()
     {
-        if(count($this->row)>0){
+        if($this->row->count() > 0){
             DB::statement(DB::raw('set @rownum=0'));
             $db = $this->row->select(DB::raw('@rownum := @rownum + 1 AS num'),'id')->orderBy('created_at','ASC')->get()->toArray();
             $test = $this->search($db,$this->getKey());
