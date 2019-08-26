@@ -46,6 +46,8 @@ class Column
 
     const ACTION_COLUMN_NAME = '__actions__';
 
+    const NUMBER_COLUMN_NAME = '__number_selector__';
+
     /**
      * @var Grid
      */

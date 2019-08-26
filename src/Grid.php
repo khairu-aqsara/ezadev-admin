@@ -546,12 +546,25 @@ class Grid
     }
 
     /**
+     * Prepend number column for grid.
+     *
+     * @return void
+     */
+    protected function prependNumberSelectorColumn()
+    {
+        $this->prependColumn(Column::NUMBER_COLUMN_NAME, ' ')
+            ->displayUsing(Displayers\NumberSelector::class)
+            ->addHeader('No');
+    }
+
+    /**
      * Add row selector columns and action columns before and after the grid.
      *
      * @return void
      */
     protected function addDefaultColumns()
     {
+        $this->prependNumberSelectorColumn();
         $this->prependRowSelectorColumn();
 
         $this->appendActionsColumn();

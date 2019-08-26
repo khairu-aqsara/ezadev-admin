@@ -27,8 +27,7 @@ class PermissionController extends AdminController
         $permissionModel = config('admin.database.permissions_model');
 
         $grid = new Grid(new $permissionModel());
-
-        $grid->column('id', 'ID')->sortable();
+        //$grid->column('id', 'ID')->sortable();
         $grid->column('slug', trans('admin.slug'));
         $grid->column('name', trans('admin.name'));
 

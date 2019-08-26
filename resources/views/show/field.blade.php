@@ -1,6 +1,22 @@
-<div class="form-group ">
-    <label class="col-sm-{{$width['label']}} control-label">{{ $label }}</label>
+<style>
+.frow {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+.frow > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+</style>
+
+<div class="frow form-group">
+    <div class="col-sm-{{$width['label']}}"><b>{{ $label }}</b></div>
+    <div style="width:30px">:</div>
     <div class="col-sm-{{$width['field']}}">
+        <span>
         @if($wrapped)
             @if($escape)
                 {{ $content }}&nbsp;
@@ -14,5 +30,6 @@
                 {!! $content !!}
             @endif
         @endif
+        </span>
     </div>
 </div>
