@@ -203,6 +203,22 @@ class Grid
     }
 
     /**
+     * Show Ordering number on the Left Grid
+     * 
+     * @param $label String
+     * @param $width int
+     */
+
+    public function set_number($name, $label, $width=32){
+        $this->rows(function(Grid\Row $row) use($name) {
+            $page = $this->model()->eloquent()->firstItem();
+            $row->column($name,$row->number + $page);
+        });
+
+        return $this->__call($name, array_filter([$label]));
+    }
+
+    /**
      * Initialize with user pre-defined default disables and exporter, etc.
      *
      * @param Closure $callback
@@ -546,25 +562,12 @@ class Grid
     }
 
     /**
-     * Prepend number column for grid.
-     *
-     * @return void
-     */
-    protected function prependNumberSelectorColumn()
-    {
-        $this->prependColumn(Column::NUMBER_COLUMN_NAME, ' ')
-            ->displayUsing(Displayers\NumberSelector::class)
-            ->addHeader('No');
-    }
-
-    /**
      * Add row selector columns and action columns before and after the grid.
      *
      * @return void
      */
     protected function addDefaultColumns()
     {
-        $this->prependNumberSelectorColumn();
         $this->prependRowSelectorColumn();
 
         $this->appendActionsColumn();

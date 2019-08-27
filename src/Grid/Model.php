@@ -23,7 +23,7 @@ class Model
      *
      * @var EloquentModel
      */
-    protected $model;
+    public $model;
 
     /**
      * @var EloquentModel
