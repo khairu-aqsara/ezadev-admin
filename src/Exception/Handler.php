@@ -7,6 +7,8 @@ use Illuminate\Support\ViewErrorBag;
 
 class Handler
 {
+
+
     /**
      * Render exception.
      *

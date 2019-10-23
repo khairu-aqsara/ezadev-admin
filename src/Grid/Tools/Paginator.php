@@ -4,7 +4,7 @@ namespace Ezadev\Admin\Grid\Tools;
 
 use Ezadev\Admin\Grid;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request as Input;
 
 class Paginator extends AbstractTool
 {
