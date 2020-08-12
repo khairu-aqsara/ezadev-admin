@@ -5,6 +5,7 @@ namespace Ezadev\Admin\Grid\Actions;
 use Ezadev\Admin\Actions\Response;
 use Ezadev\Admin\Actions\RowAction;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Delete extends RowAction
 {
@@ -29,7 +30,9 @@ class Delete extends RowAction
         ];
 
         try {
-            $model->delete();
+            DB::transaction(function () use ($model) {
+                $model->delete();
+            });
         } catch (\Exception $exception) {
             return $this->response()->error("{$trans['failed']} : {$exception->getMessage()}");
         }

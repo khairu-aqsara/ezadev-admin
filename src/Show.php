@@ -6,6 +6,7 @@ use Ezadev\Admin\Show\Divider;
 use Ezadev\Admin\Show\Field;
 use Ezadev\Admin\Show\Panel;
 use Ezadev\Admin\Show\Relation;
+use Ezadev\Admin\Traits\ShouldSnakeAttributes;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,8 @@ use Illuminate\Support\Str;
 
 class Show implements Renderable
 {
+    use ShouldSnakeAttributes;
+
     /**
      * The Eloquent model to show.
      *
@@ -338,7 +341,7 @@ class Show implements Renderable
     public function setWidth($fieldWidth = 8, $labelWidth = 2)
     {
         collect($this->fields)->each(function ($field) use ($fieldWidth, $labelWidth) {
-            $field->each->setWidth($fieldWidth, $labelWidth);
+            $field->setWidth($fieldWidth, $labelWidth);
         });
 
         return $this;
@@ -444,7 +447,9 @@ class Show implements Renderable
                 return $this->addRelation($method, $arguments[1], $arguments[0]);
             }
 
-            return $this->addField($method, Arr::get($arguments, 0))->setRelation(Str::snake($method));
+            return $this->addField($method, Arr::get($arguments, 0))->setRelation(
+                $this->shouldSnakeAttributes() ? Str::snake($method) : $method
+            );
         }
 
         if ($relation    instanceof HasMany

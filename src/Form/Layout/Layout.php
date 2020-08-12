@@ -86,4 +86,20 @@ class Layout
 
         return $this->columns;
     }
+
+    /**
+     * Remove reserved fields from form layout.
+     *
+     * @param array $fields
+     */
+    public function removeReservedFields(array $fields)
+    {
+        if (empty($fields)) {
+            return;
+        }
+
+        foreach ($this->columns() as &$column) {
+            $column->removeFields($fields);
+        }
+    }
 }

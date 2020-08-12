@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 
 class Permission extends Model
 {
+    use DefaultDatetimeFormat;
+
     /**
      * @var array
      */
@@ -42,7 +44,7 @@ class Permission extends Model
      *
      * @return BelongsToMany
      */
-    public function roles() : BelongsToMany
+    public function roles(): BelongsToMany
     {
         $pivotTable = config('admin.database.role_permissions_table');
 
@@ -58,7 +60,7 @@ class Permission extends Model
      *
      * @return bool
      */
-    public function shouldPassThrough(Request $request) : bool
+    public function shouldPassThrough(Request $request): bool
     {
         if (empty($this->http_method) && empty($this->http_path)) {
             return true;
@@ -106,7 +108,7 @@ class Permission extends Model
      *
      * @return bool
      */
-    protected function matchRequest(array $match, Request $request) : bool
+    protected function matchRequest(array $match, Request $request): bool
     {
         if ($match['path'] == '/') {
             $path = '/';

@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\DB;
  */
 class Menu extends Model
 {
-    use AdminBuilder, ModelTree {
+    use DefaultDatetimeFormat;
+    use ModelTree {
         ModelTree::boot as treeBoot;
     }
 
@@ -49,7 +50,7 @@ class Menu extends Model
      *
      * @return BelongsToMany
      */
-    public function roles() : BelongsToMany
+    public function roles(): BelongsToMany
     {
         $pivotTable = config('admin.database.role_menu_table');
 
@@ -61,12 +62,12 @@ class Menu extends Model
     /**
      * @return array
      */
-    public function allNodes() : array
+    public function allNodes(): array
     {
         $connection = config('admin.database.connection') ?: config('database.default');
         $orderColumn = DB::connection($connection)->getQueryGrammar()->wrap($this->orderColumn);
 
-        $byOrder = $orderColumn.' = 0,'.$orderColumn;
+        $byOrder = 'ROOT ASC,'.$orderColumn;
 
         $query = static::query();
 
@@ -74,7 +75,7 @@ class Menu extends Model
             $query->with('roles');
         }
 
-        return $query->orderByRaw($byOrder)->get()->toArray();
+        return $query->selectRaw('*, '.$orderColumn.' ROOT')->orderByRaw($byOrder)->get()->toArray();
     }
 
     /**

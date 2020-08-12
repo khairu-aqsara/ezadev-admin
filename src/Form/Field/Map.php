@@ -6,6 +6,11 @@ use Ezadev\Admin\Form\Field;
 
 class Map extends Field
 {
+    protected $value = [
+        'lat' => null,
+        'lng' => null,
+    ];
+
     /**
      * Column name.
      *

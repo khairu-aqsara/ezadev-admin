@@ -8,7 +8,7 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    {!! $form->open(['class' => "form-horizontal"]) !!}
+    {!! $form->open() !!}
 
     <div class="box-body">
 
@@ -45,3 +45,4 @@
 <!-- /.box-footer -->
     {!! $form->close() !!}
 </div>
+

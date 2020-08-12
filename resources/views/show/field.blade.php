@@ -1,28 +1,17 @@
-<style>
-.frow {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-}
-.frow > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
-}
-</style>
-
-<div class="frow form-group">
-    <div class="col-sm-{{$width['label']}}"><b>{{ $label }}</b></div>
-    <div style="width:30px">:</div>
+<div class="form-group ">
+    <label class="col-sm-{{$width['label']}} control-label">{{ $label }}</label>
     <div class="col-sm-{{$width['field']}}">
-        <span>
         @if($wrapped)
-            @if($escape)
-                {{ $content }}&nbsp;
-            @else
-                {!! $content !!}&nbsp;
-            @endif
+        <div class="box box-solid box-default no-margin box-show">
+            <!-- /.box-header -->
+            <div class="box-body">
+                @if($escape)
+                    {{ $content }}&nbsp;
+                @else
+                    {!! $content !!}&nbsp;
+                @endif
+            </div><!-- /.box-body -->
+        </div>
         @else
             @if($escape)
                 {{ $content }}
@@ -30,6 +19,5 @@
                 {!! $content !!}
             @endif
         @endif
-        </span>
     </div>
 </div>
