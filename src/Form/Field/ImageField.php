@@ -2,6 +2,7 @@
 
 namespace Ezadev\Admin\Form\Field;
 
+use Illuminate\Support\Str;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image as InterventionImage;
 use Intervention\Image\ImageManagerStatic;

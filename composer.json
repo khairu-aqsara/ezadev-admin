@@ -32,15 +32,6 @@
             "src/helpers.php"
         ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\Models\\": "tests/models",
-            "Tests\\Controllers\\": "tests/controllers"
-        },
-        "classmap": [
-            "tests/TestCase.php"
-        ]
-    },
     "scripts": {
         "test": "./vendor/bin/phpunit"
     },
@@ -56,8 +47,6 @@
             "aliases": {
                 "Admin": "Ezadev\\Admin\\Facades\\Admin"
             }
-
         }
     }
-
 }

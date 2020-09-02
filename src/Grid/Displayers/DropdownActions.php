@@ -28,28 +28,6 @@ class DropdownActions extends Actions
     protected $defaultClass = [Edit::class, Show::class, Delete::class];
 
     /**
-     * Add JS script into pages.
-     *
-     * @return void.
-     */
-    protected function addScript()
-    {
-        $script = <<<'SCRIPT'
-(function ($) {
-    $('.table-responsive').on('show.bs.dropdown', function () {
-         $('.table-responsive').css("overflow", "inherit" );
-    });
-    
-    $('.table-responsive').on('hide.bs.dropdown', function () {
-         $('.table-responsive').css("overflow", "auto");
-    })
-})(jQuery);
-SCRIPT;
-
-        Admin::script($script);
-    }
-
-    /**
      * @param RowAction $action
      *
      * @return $this

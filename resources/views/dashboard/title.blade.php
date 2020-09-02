@@ -26,9 +26,8 @@
 </style>
 
 <div class="title">
-    ezadev-admin
+    Ezadev-admin
 </div>
 <div class="links">
     <a href="https://github.com/khairu-aqsara/ezadev-admin" target="_blank">Github</a>
-    <a href="https://khairu-aqsara.gitbook.io/ezadev-admin/"  target="_blank">Documentation</a>
 </div>

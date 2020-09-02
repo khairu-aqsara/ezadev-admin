@@ -2,11 +2,11 @@
 
 namespace Ezadev\Admin\Auth\Database;
 
+use Ezadev\Admin\Traits\DefaultDatetimeFormat;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Ezadev\Admin\Traits\DefaultDatetimeFormat;
 
 class Permission extends Model
 {

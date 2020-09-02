@@ -45,7 +45,7 @@ class ConfigCommand extends Command
         $this->printDiff('Removed', $removed, true);
 
         $this->line('');
-        $this->comment('Please open `vendor/Ezadev/ezadev-admin/config/admin.php` to check the difference');
+        $this->comment('Please open `vendor/ezadev/ezadev-admin/config/admin.php` to check the difference');
     }
 
     protected function diff(array $from, array $to)

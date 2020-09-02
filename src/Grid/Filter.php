@@ -9,7 +9,6 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 
 /**
@@ -97,7 +96,7 @@ class Filter implements Renderable
     /**
      * @var string
      */
-    protected $view = 'admin::filter.container';
+    public $view = 'admin::filter.container';
 
     /**
      * @var string
@@ -284,7 +283,7 @@ class Filter implements Renderable
      *
      * @param mixed $id
      */
-    protected function removeFilterByID($id)
+    public function removeFilterByID($id)
     {
         $this->filters = array_filter($this->filters, function (AbstractFilter $filter) use ($id) {
             return $filter->getId() != $id;
@@ -298,7 +297,7 @@ class Filter implements Renderable
      */
     public function conditions()
     {
-        $inputs = Arr::dot(Input::all());
+        $inputs = Arr::dot(request()->all());
 
         $inputs = array_filter($inputs, function ($input) {
             return $input !== '' && !is_null($input);
@@ -421,6 +420,16 @@ class Filter implements Renderable
         return tap(new Scope($key, $label), function (Scope $scope) {
             return $this->scopes->push($scope);
         });
+    }
+
+    /**
+     * Add separator in filter scope.
+     *
+     * @return mixed
+     */
+    public function scopeSeparator()
+    {
+        return $this->scope(Scope::SEPARATOR);
     }
 
     /**

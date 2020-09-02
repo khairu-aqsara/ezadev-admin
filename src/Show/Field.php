@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 
 class Field implements Renderable
@@ -213,7 +214,6 @@ class Field implements Renderable
     {
         return $this->unescape()->as(function ($images) use ($server, $width, $height) {
             return collect($images)->map(function ($path) use ($server, $width, $height) {
-                $name = basename($path);
                 if (empty($path)) {
                     return '';
                 }
@@ -224,33 +224,15 @@ class Field implements Renderable
                     $src = $server.$path;
                 } else {
                     $disk = config('admin.upload.disk');
-                    $storage = Storage::disk($disk);
+
                     if (config("filesystems.disks.{$disk}")) {
-                        $src = $storage->url($path);
-                        $size = ($storage->size($path) / 1000).'KB';
+                        $src = Storage::disk($disk)->url($path);
                     } else {
                         return '';
                     }
                 }
-                return <<<HTML
-<ul class="mailbox-attachments">
-    <li style="margin-bottom: 0;">
-        <span class="mailbox-attachment-icon has-img">
-            <img src='$src' alt='Attachment'/>
-        </span>
-        <div class="mailbox-attachment-info">
-        <div class="mailbox-attachment-name">
-            <i class="fa fa-camera"></i> {$name}
-            </div>
-            <span class="mailbox-attachment-size">
-                {$size}&nbsp;
-                <a href="{$src}" class="btn btn-default btn-xs pull-right" target="_blank"><i class="fa fa-cloud-download"></i></a>
-            </span>
-        </div>
-    </li>
-    </ul>
-HTML;
-                return "";
+
+                return "<img src='$src' style='max-width:{$width}px;max-height:{$height}px' class='img' />";
             })->implode('&nbsp;');
         });
     }
@@ -306,47 +288,48 @@ HTML;
     public function file($server = '', $download = true)
     {
         $field = $this;
-        return $this->unescape()->as(function ($images) use ($server, $download, $field) {
-            return collect($images)->map(function ($path) use ($server, $download, $field) {
-                $name = basename($path);
-                if (empty($path)) {
-                    return '';
+
+        return $this->unescape()->as(function ($path) use ($server, $download, $field) {
+            $name = basename($path);
+
+            $field->border = false;
+
+            $size = $url = '';
+
+            if (url()->isValidUrl($path)) {
+                $url = $path;
+            } elseif ($server) {
+                $url = $server.$path;
+            } else {
+                $storage = Storage::disk(config('admin.upload.disk'));
+                if ($storage->exists($path)) {
+                    $url = $storage->url($path);
+                    $size = ($storage->size($path) / 1000).'KB';
                 }
+            }
 
-                if (url()->isValidUrl($path)) {
-                    $url = $path;
-                } elseif ($server) {
-                    $url = $server.$path;
-                } else {
-                    $disk = config('admin.upload.disk');
-                    $storage = Storage::disk(config('admin.upload.disk'));
-                    if (config("filesystems.disks.{$disk}")) {
-                        $url = $storage->url($path);
-                        $size = ($storage->size($path) / 1000).'KB';
-                    } else {
-                        $url = '';
-                    }
-                }
+            if (!$url) {
+                return '';
+            }
 
-                $download = $download ? "download='$name'" : '';
+            $download = $download ? "download='$name'" : '';
 
-                return <<<HTML
-<ul class="mailbox-attachments">
+            return <<<HTML
+<ul class="mailbox-attachments clearfix">
     <li style="margin-bottom: 0;">
-        <span class="mailbox-attachment-icon"><i class="fa {$field->getFileIcon($name)}"></i></span>
-        <div class="mailbox-attachment-info">
+      <span class="mailbox-attachment-icon"><i class="fa {$field->getFileIcon($name)}"></i></span>
+      <div class="mailbox-attachment-info">
         <div class="mailbox-attachment-name">
             <i class="fa fa-paperclip"></i> {$name}
             </div>
             <span class="mailbox-attachment-size">
-                {$size}&nbsp;
-                <a href="{$url}" class="btn btn-default btn-xs pull-right" target="_blank" $download><i class="fa fa-cloud-download"></i></a>
+              {$size}&nbsp;
+              <a href="{$url}" class="btn btn-default btn-xs pull-right" target="_blank" $download><i class="fa fa-cloud-download"></i></a>
             </span>
-        </div>
+      </div>
     </li>
-    </ul>
+  </ul>
 HTML;
-            })->implode('');
         });
     }
 
@@ -501,7 +484,11 @@ HTML;
 
             $this->value = $relationValue;
         } else {
-            $this->value = $model->getAttribute($this->name);
+            if (Str::contains($this->name, '.')) {
+                $this->value = $this->getRelationValue($model, $this->name);
+            } else {
+                $this->value = $model->getAttribute($this->name);
+            }
         }
 
         return $this;
@@ -519,6 +506,21 @@ HTML;
         $this->relation = $relation;
 
         return $this;
+    }
+
+    /**
+     * @param Model  $model
+     * @param string $name
+     *
+     * @return mixed
+     */
+    protected function getRelationValue($model, $name)
+    {
+        list($relation, $key) = explode('.', $name);
+
+        if ($related = $model->getRelationValue($relation)) {
+            return $related->getAttribute($key);
+        }
     }
 
     /**

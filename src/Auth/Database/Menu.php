@@ -2,12 +2,11 @@
 
 namespace Ezadev\Admin\Auth\Database;
 
-use Ezadev\Admin\Traits\AdminBuilder;
+use Ezadev\Admin\Traits\DefaultDatetimeFormat;
 use Ezadev\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;
-use Ezadev\Admin\Traits\DefaultDatetimeFormat;
 
 /**
  * Class Menu.
