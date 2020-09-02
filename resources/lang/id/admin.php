@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'online'                => 'Daring',
+    'online'                => 'Online',
     'login'                 => 'Masuk',
     'logout'                => 'Keluar',
     'setting'               => 'Pengaturan',
@@ -14,7 +14,7 @@ return [
     'avatar'                => 'Avatar',
     'list'                  => 'Daftar',
     'new'                   => 'Baru',
-    'create'                => 'Buat',
+    'create'                => 'Tambah',
     'delete'                => 'Hapus',
     'remove'                => 'Hapus',
     'edit'                  => 'Ubah',
@@ -42,7 +42,7 @@ return [
     'description'           => 'Deskripsi',
     'back'                  => 'Kembali',
     'back_to_list'          => 'Kembali ke daftar',
-    'submit'                => 'Submit',
+    'submit'                => 'Simpan',
     'menu'                  => 'Menu',
     'input'                 => 'Masukan',
     'succeeded'             => 'Berhasil',
