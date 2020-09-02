@@ -25,7 +25,7 @@ class LogController extends AdminController
 
         $grid->model()->orderBy('id', 'DESC');
 
-        //$grid->column('id', 'ID')->sortable();
+        $grid->column('id', 'ID')->sortable();
         $grid->column('user.name', 'User');
         $grid->column('method')->display(function ($method) {
             $color = Arr::get(OperationLog::$methodColors, $method, 'grey');
@@ -41,7 +41,7 @@ class LogController extends AdminController
                 return '<code>{}</code>';
             }
 
-            return '<pre>'.json_encode($input, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE).'</pre>';
+            return '<pre>'.json_encode($input, JSON_PRETTY_PRINT | JSON_HEX_TAG).'</pre>';
         });
 
         $grid->column('created_at', trans('admin.created_at'));

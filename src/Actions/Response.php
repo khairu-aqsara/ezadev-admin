@@ -49,6 +49,11 @@ class Response
     protected $then = [];
 
     /**
+     * @var string
+     */
+    protected $html = '';
+
+    /**
      * @return $this
      */
     public function toastr()
@@ -148,6 +153,32 @@ class Response
     }
 
     /**
+     * Send a open new window response.
+     *
+     * @param string $url
+     */
+    public function open(string $url)
+    {
+        $this->then = ['action' => 'open', 'value' => $url];
+
+        return $this;
+    }
+
+    /**
+     * Send a location redirect response.
+     *
+     * @param string $location
+     *
+     * @return $this
+     */
+    public function location(string $location)
+    {
+        $this->then = ['action' => 'location', 'value' => $location];
+
+        return $this;
+    }
+
+    /**
      * Send a download response.
      *
      * @param string $url
@@ -169,6 +200,20 @@ class Response
     public function refresh()
     {
         $this->then = ['action' => 'refresh', 'value' => true];
+
+        return $this;
+    }
+
+    /**
+     * Send a html response.
+     *
+     * @param string $html
+     *
+     * @return $this
+     */
+    public function html($html = '')
+    {
+        $this->html = $html;
 
         return $this;
     }
@@ -202,6 +247,10 @@ class Response
             ['status' => $this->status, 'then' => $this->then],
             $this->getPlugin()->getOptions()
         );
+
+        if ($this->html) {
+            $data['html'] = $this->html;
+        }
 
         return response()->json($data);
     }

@@ -21,11 +21,11 @@ class Admin
     use HasAssets;
 
     /**
-     * The ezadev-admin admin version.
+     * The Laravel admin version.
      *
      * @var string
      */
-    const VERSION = '0.5.4';
+    const VERSION = '0.5.7';
 
     /**
      * @var Navbar
@@ -63,13 +63,13 @@ class Admin
     protected static $bootedCallbacks = [];
 
     /**
-     * Returns the long version of ezadev-admin.
+     * Returns the long version of Ezadev-admin.
      *
      * @return string The long application version
      */
     public static function getLongVersion()
     {
-        return sprintf('ezadev-admin <comment>version</comment> <info>%s</info>', self::VERSION);
+        return sprintf('Ezadev-admin <comment>version</comment> <info>%s</info>', self::VERSION);
     }
 
     /**
@@ -325,6 +325,8 @@ class Admin
 
                 $router->post('_handle_form_', 'HandleController@handleForm')->name('admin.handle-form');
                 $router->post('_handle_action_', 'HandleController@handleAction')->name('admin.handle-action');
+                $router->get('_handle_selectable_', 'HandleController@handleSelectable')->name('admin.handle-selectable');
+                $router->get('_handle_renderable_', 'HandleController@handleRenderable')->name('admin.handle-renderable');
             });
 
             $authController = config('admin.auth.controller', AuthController::class);

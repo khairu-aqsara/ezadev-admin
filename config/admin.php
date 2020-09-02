@@ -4,29 +4,29 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin name
+    | Ezadev-admin name
     |--------------------------------------------------------------------------
     |
     | This value is the name of ezadev-admin, This setting is displayed on the
     | login page.
     |
     */
-    'name' => 'ezadev-admin',
+    'name' => 'Ezadev-admin',
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin logo
+    | Ezadev-admin logo
     |--------------------------------------------------------------------------
     |
     | The logo of all admin pages. You can also set it as an image by using a
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>ezadev-admin</b> admin',
+    'logo' => '<b>Ezadev</b> admin',
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin mini logo
+    | Ezadev-admin mini logo
     |--------------------------------------------------------------------------
     |
     | The logo of all admin pages when the sidebar menu is collapsed. You can
@@ -34,11 +34,11 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<b>Ez</b>',
+    'logo-mini' => '<b>La</b>',
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin bootstrap setting
+    | Ezadev-admin bootstrap setting
     |--------------------------------------------------------------------------
     |
     | This value is the path of ezadev-admin bootstrap file.
@@ -48,7 +48,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin route settings
+    | Ezadev-admin route settings
     |--------------------------------------------------------------------------
     |
     | The routing configuration of the admin page, including the path prefix,
@@ -67,7 +67,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin install directory
+    | Ezadev-admin install directory
     |--------------------------------------------------------------------------
     |
     | The installation directory of the controller and routing configuration
@@ -79,7 +79,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin html title
+    | Ezadev-admin html title
     |--------------------------------------------------------------------------
     |
     | Html title for all pages.
@@ -99,7 +99,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin auth setting
+    | Ezadev-admin auth setting
     |--------------------------------------------------------------------------
     |
     | Authentication settings for all admin pages. Include an authentication
@@ -138,12 +138,13 @@ return [
         'excepts' => [
             'auth/login',
             'auth/logout',
+            '_handle_action_',
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin upload setting
+    | Ezadev-admin upload setting
     |--------------------------------------------------------------------------
     |
     | File system configuration for form upload files and images, including
@@ -164,7 +165,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | ezadev-admin database settings
+    | Ezadev-admin database settings
     |--------------------------------------------------------------------------
     |
     | Here are database settings for ezadev-admin builtin model & tables.
