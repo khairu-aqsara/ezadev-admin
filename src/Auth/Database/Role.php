@@ -4,6 +4,7 @@ namespace Ezadev\Admin\Auth\Database;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Ezadev\Admin\Traits\DefaultDatetimeFormat;
 
 class Role extends Model
 {

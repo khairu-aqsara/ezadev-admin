@@ -4,6 +4,7 @@ namespace Ezadev\Admin\Auth\Database;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Ezadev\Admin\Traits\DefaultDatetimeFormat;
 
 class OperationLog extends Model
 {

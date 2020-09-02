@@ -2,6 +2,8 @@
 
 namespace Ezadev\Admin;
 
+use Ezadev\Admin\Layout\Content;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -58,7 +60,7 @@ class AdminServiceProvider extends ServiceProvider
             'admin.log',
             'admin.bootstrap',
             'admin.permission',
-//            'admin.session',
+            //            'admin.session',
         ],
     ];
 
@@ -82,7 +84,7 @@ class AdminServiceProvider extends ServiceProvider
         $this->compatibleBlade();
 
         Blade::directive('box', function ($title) {
-            return "<?php \$box = new \Ezadev\Admin\Widgets\Box({$title}, '";
+            return "<?php \$box = new \Encore\Admin\Widgets\Box({$title}, '";
         });
 
         Blade::directive('endbox', function ($expression) {
@@ -111,10 +113,10 @@ class AdminServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/../config' => config_path()], 'ezadev-admin-config');
-            $this->publishes([__DIR__.'/../resources/lang' => resource_path('lang')], 'ezadev-admin-lang');
-            $this->publishes([__DIR__.'/../database/migrations' => database_path('migrations')], 'ezadev-admin-migrations');
-            $this->publishes([__DIR__.'/../resources/assets' => public_path('vendor/ezadev-admin')], 'ezadev-admin-assets');
+            $this->publishes([__DIR__.'/../config' => config_path()], 'laravel-admin-config');
+            $this->publishes([__DIR__.'/../resources/lang' => resource_path('lang')], 'laravel-admin-lang');
+            $this->publishes([__DIR__.'/../database/migrations' => database_path('migrations')], 'laravel-admin-migrations');
+            $this->publishes([__DIR__.'/../resources/assets' => public_path('vendor/laravel-admin')], 'laravel-admin-assets');
         }
     }
 

@@ -7,6 +7,7 @@ use Ezadev\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;
+use Ezadev\Admin\Traits\DefaultDatetimeFormat;
 
 /**
  * Class Menu.
