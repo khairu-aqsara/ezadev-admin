@@ -32,9 +32,9 @@ class MultipleImage extends MultipleFile
         $this->name = $this->getStoreName($image);
 
         $this->callInterventionMethods($image->getRealPath());
-
-        return tap($this->upload($image), function () {
-            $this->name = null;
-        });
+        $path = $this->upload($image);
+        $this->uploadAndDeleteOriginalThumbnail($image);
+        $this->name = null;
+        return $path;
     }
 }
