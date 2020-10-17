@@ -1471,6 +1471,19 @@ class Form implements Renderable
     {
         return Arr::set($this->inputs, $name, $value);
     }
+    
+    /**
+     * __isset.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    
+    public function __isset($name)
+    {
+        return isset($this->inputs[$name]);
+    }
 
     /**
      * Generate a Field object and add to form builder if Field exists.
