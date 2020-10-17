@@ -21,7 +21,7 @@ class Admin
     use HasAssets;
 
     /**
-     * The Laravel admin version.
+     * The Ezadev admin version.
      *
      * @var string
      */
