@@ -26,6 +26,7 @@ use Illuminate\Support\Arr;
  * @method Field\Slider         slider($column, $label = '')
  * @method Field\File           file($column, $label = '')
  * @method Field\Image          image($column, $label = '')
+ * @method Field\DateMultiple   DateMultiple($column, $label = '')
  * @method Field\Date           date($column, $label = '')
  * @method Field\Datetime       datetime($column, $label = '')
  * @method Field\Time           time($column, $label = '')
@@ -74,6 +75,7 @@ trait HasFields
         'color'          => Field\Color::class,
         'currency'       => Field\Currency::class,
         'date'           => Field\Date::class,
+        'DateMultiple'   => Field\DateMultiple::class,
         'dateRange'      => Field\DateRange::class,
         'datetime'       => Field\Datetime::class,
         'dateTimeRange'  => Field\DatetimeRange::class,
