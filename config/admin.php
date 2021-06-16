@@ -398,4 +398,6 @@ return [
     'extensions' => [
 
     ],
+    'copyright' => 'My Admin',
+    'copyright_website' => 'https://github.com/khairu-aqsara/ezadev-admin/'
 ];
