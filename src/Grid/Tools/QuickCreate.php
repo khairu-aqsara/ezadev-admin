@@ -248,7 +248,7 @@ class QuickCreate implements Renderable
     });
     
     $('.quick-create .create-form').submit(function (e) {
-    
+        $(':submit', e.target).button('loading');
         e.preventDefault();
     
         $.ajax({
@@ -269,6 +269,7 @@ class QuickCreate implements Renderable
                 }
             },
             error:function(XMLHttpRequest, textStatus){
+                $(':submit', e.target).button('reset');
                 if (typeof XMLHttpRequest.responseJSON === 'object') {
                     $.admin.toastr.error(XMLHttpRequest.responseJSON.message, '', {positionClass:"toast-top-center", timeOut: 10000});
                 }

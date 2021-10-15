@@ -5,6 +5,7 @@ namespace Ezadev\Admin\Controllers;
 use Ezadev\Admin\Form;
 use Ezadev\Admin\Grid;
 use Ezadev\Admin\Show;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends AdminController
 {
@@ -116,7 +117,7 @@ class UserController extends AdminController
 
         $form->saving(function (Form $form) {
             if ($form->password && $form->model()->password != $form->password) {
-                $form->password = bcrypt($form->password);
+                $form->password = Hash::make($form->password);
             }
         });
 

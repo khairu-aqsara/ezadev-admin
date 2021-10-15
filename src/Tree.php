@@ -220,12 +220,12 @@ class Tree implements Renderable
     protected function script()
     {
         $trans = [
-            'delete_confirm'    => trans('admin.delete_confirm'),
-            'save_succeeded'    => trans('admin.save_succeeded'),
-            'refresh_succeeded' => trans('admin.refresh_succeeded'),
-            'delete_succeeded'  => trans('admin.delete_succeeded'),
-            'confirm'           => trans('admin.confirm'),
-            'cancel'            => trans('admin.cancel'),
+            'delete_confirm'    => str_replace("'", "\'", trans('admin.delete_confirm')),
+            'save_succeeded'    => str_replace("'", "\'", trans('admin.save_succeeded')),
+            'refresh_succeeded' => str_replace("'", "\'", trans('admin.refresh_succeeded')),
+            'delete_succeeded'  => str_replace("'", "\'", trans('admin.delete_succeeded')),
+            'confirm'           => str_replace("'", "\'", trans('admin.confirm')),
+            'cancel'            => str_replace("'", "\'", trans('admin.cancel')),
         ];
 
         $nestableOptions = json_encode($this->nestableOptions);
@@ -233,9 +233,7 @@ class Tree implements Renderable
         $url = url($this->path);
 
         return <<<SCRIPT
-
         $('#{$this->elementId}').nestable($nestableOptions);
-
         $('.tree_branch_delete').click(function() {
             var id = $(this).data('id');
             swal({
@@ -274,10 +272,8 @@ class Tree implements Renderable
                 }
             });
         });
-
         $('.{$this->elementId}-save').click(function () {
             var serialize = $('#{$this->elementId}').nestable('serialize');
-
             $.post('{$url}', {
                 _token: LA.token,
                 _order: JSON.stringify(serialize)
@@ -287,12 +283,10 @@ class Tree implements Renderable
                 toastr.success('{$trans['save_succeeded']}');
             });
         });
-
         $('.{$this->elementId}-refresh').click(function () {
             $.pjax.reload('#pjax-container');
             toastr.success('{$trans['refresh_succeeded']}');
         });
-
         $('.{$this->elementId}-tree-tools').on('click', function(e){
             var action = $(this).data('action');
             if (action === 'expand') {
@@ -302,8 +296,6 @@ class Tree implements Renderable
                 $('.dd').nestable('collapseAll');
             }
         });
-
-
 SCRIPT;
     }
 

@@ -224,7 +224,7 @@ return [
          * or specific method to path like: get:admin/auth/logs.
          */
         'except' => [
-            'admin/auth/logs*',
+            env('ADMIN_ROUTE_PREFIX', 'admin').'/auth/logs*',
         ],
     ],
 
@@ -276,7 +276,7 @@ return [
     |    "skin-red", "skin-red-light", "skin-black", "skin-black-light".
     |
     */
-    'skin' => 'skin-blue-light',
+    'skin' => env('ADMIN_SKIN', 'skin-blue-light'),
 
     /*
     |--------------------------------------------------------------------------
@@ -364,6 +364,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Exclude route from generate menu command
+    |--------------------------------------------------------------------------
+    */
+    'menu_exclude' => [
+        '_handle_selectable_',
+        '_handle_renderable_',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Alert message that will displayed on top of the page.
     |--------------------------------------------------------------------------
     */
@@ -398,6 +408,8 @@ return [
     'extensions' => [
 
     ],
+    // User Navbar Model Avilable Options simple, full
+    'navbarmode'=>'simple',
     'copyright' => 'My Admin',
     'copyright_website' => 'https://github.com/khairu-aqsara/ezadev-admin/'
 ];
