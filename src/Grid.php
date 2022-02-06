@@ -862,6 +862,22 @@ class Grid
 
         return $this;
     }
+    
+     /**
+     * Set serial Number on grid.
+     *
+     * @param string $title
+     *
+     * @return $this
+     */
+    public function set_number($name, $label, $width=32){
+        $this->rows(function(Grid\Row $row) use($name) {
+            $page = $this->model()->eloquent()->firstItem();
+            $row->column($name,$row->number + $page);
+        });
+
+        return $this->__call($name, array_filter([$label]));
+    }
 
     /**
      * Set relation for grid.
