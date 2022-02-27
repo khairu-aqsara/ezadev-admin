@@ -6,7 +6,7 @@
 ### Instalations
 
 ```
-composer create-project --prefer-dist laravel/laravel ezadev-admin "5.5.*"
+composer create-project --prefer-dist laravel/laravel:^7.0 blog
 composer require ezadev/admin
 php artisan vendor:publish --provider="Ezadev\Admin\AdminServiceProvider"
 ```
@@ -18,9 +18,3 @@ php artisan admin:install
 ```
 
 then run `php artisan serve` Open http://localhost:8000/admin/ in browser,use username admin and password admin to login.
-
-### For Old Version
-
-```
-composer require ezadev/admin:0.5.5
-```
