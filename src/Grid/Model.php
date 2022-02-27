@@ -527,7 +527,7 @@ class Model
 
         $columnNameContainsDots = Str::contains($columnName, '.');
         $isRelation = $this->queries->contains(function ($query) use ($columnName) {
-            $columnName = Str::camel(Str::before($columnName, '.'));
+            $columnName = Str::snake(Str::before($columnName, '.'));
             return $query['method'] === 'with' && in_array($columnName, $query['arguments'], true);
         });
         if ($columnNameContainsDots === true && $isRelation) {
@@ -577,6 +577,10 @@ class Model
         if ($this->queries->contains(function ($query) use ($relationName) {
             return $query['method'] == 'with' && in_array($relationName, $query['arguments']);
         })) {
+            if (!method_exists($this->model, $relationName)) {
+                return;
+            }
+            
             $relation = $this->model->$relationName();
 
             $this->queries->push([
