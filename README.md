@@ -1,3 +1,6 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=khairu-aqsara_ezadev-admin&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=khairu-aqsara_ezadev-admin) 
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=khairu-aqsara_ezadev-admin&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=khairu-aqsara_ezadev-admin)
+
 ### Requirments
 * PHP >= 7.1.0
 * Laravel >= 5.5.0
