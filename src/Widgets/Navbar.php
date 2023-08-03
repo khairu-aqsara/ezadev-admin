@@ -8,8 +8,6 @@ use Illuminate\Contracts\Support\Renderable;
 
 class Navbar implements Renderable
 {
-    protected $refresh = true;
-    
     /**
      * @var array
      */
@@ -24,14 +22,6 @@ class Navbar implements Renderable
             'left'  => collect(),
             'right' => collect(),
         ];
-    }
-
-    /**
-     * Disable Refresh Button
-     */
-    public function disable_refresh()
-    {
-        $this->refresh = false;
     }
 
     /**
@@ -78,9 +68,7 @@ class Navbar implements Renderable
     public function render($part = 'right')
     {
         if ($part == 'right') {
-            if($this->refresh) {
-                $this->right(new RefreshButton());
-            }
+            $this->right(new RefreshButton());
         }
 
         if (!isset($this->elements[$part]) || $this->elements[$part]->isEmpty()) {

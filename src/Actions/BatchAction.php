@@ -72,10 +72,12 @@ abstract class BatchAction extends GridAction
 
         return <<<SCRIPT
         var key = $.admin.grid.selected();
+
         if (key.length === 0) {
             $.admin.toastr.warning('{$warning}', '', {positionClass: 'toast-top-center'});
             return ;
         }
+
         Object.assign(data, {_key:key});
 SCRIPT;
     }

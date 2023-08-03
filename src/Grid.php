@@ -572,7 +572,7 @@ class Grid
             $this->columnNames[] = $column->getName();
         });
 
-       $this->buildRows($data, $collection);
+        $this->buildRows($data, $collection);
 
         $this->builded = true;
     }
@@ -580,7 +580,7 @@ class Grid
     /**
      * Build the grid rows.
      *
-     * @param array $data
+     * @param array      $data
      * @param Collection $collection
      *
      * @return void
@@ -861,22 +861,6 @@ class Grid
         $this->variables['title'] = $title;
 
         return $this;
-    }
-    
-     /**
-     * Set serial Number on grid.
-     *
-     * @param string $title
-     *
-     * @return $this
-     */
-    public function set_number($name, $label, $width=32){
-        $this->rows(function(Grid\Row $row) use($name) {
-            $page = $this->model()->eloquent()->firstItem();
-            $row->column($name,$row->number + $page);
-        });
-
-        return $this->__call($name, array_filter([$label]));
     }
 
     /**

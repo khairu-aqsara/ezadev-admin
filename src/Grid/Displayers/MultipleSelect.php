@@ -3,7 +3,6 @@
 namespace Ezadev\Admin\Grid\Displayers;
 
 use Ezadev\Admin\Admin;
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 
 class MultipleSelect extends AbstractDisplayer

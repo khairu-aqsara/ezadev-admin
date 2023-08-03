@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Ezadev-admin',
+    'name' => 'EZADEV',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>Ezadev</b> admin',
+    'logo' => '<b>EZADEV</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -138,7 +138,6 @@ return [
         'excepts' => [
             'auth/login',
             'auth/logout',
-            '_handle_action_',
         ],
     ],
 
@@ -154,7 +153,7 @@ return [
     'upload' => [
 
         // Disk in `config/filesystem.php`.
-        'disk' => 'admin',
+        'disk' => 'public',
 
         // Image and file upload path under the disk above.
         'directory' => [
@@ -250,7 +249,7 @@ return [
     | Set a default avatar for newly created users.
     |
     */
-    'default_avatar' => '/vendor/ezadev-admin/AdminLTE/dist/img/user2-160x160.jpg',
+    'default_avatar' => 'https://avatars.githubusercontent.com/u/64028406?s=200&v=4',
 
     /*
     |--------------------------------------------------------------------------
@@ -276,7 +275,7 @@ return [
     |    "skin-red", "skin-red-light", "skin-black", "skin-black-light".
     |
     */
-    'skin' => env('ADMIN_SKIN', 'skin-blue-light'),
+    'skin' => env('ADMIN_SKIN', 'skin-green'),
 
     /*
     |--------------------------------------------------------------------------
@@ -290,7 +289,7 @@ return [
     | "sidebar-mini".
     |
     */
-    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+    'layout' => ['sidebar-mini'],
 
     /*
     |--------------------------------------------------------------------------
@@ -300,7 +299,7 @@ return [
     | This value is used to set the background image of login page.
     |
     */
-    'login_background_image' => '',
+    'login_background_image' => 'https://picsum.photos/1024/800/?blur',
 
     /*
     |--------------------------------------------------------------------------
@@ -360,7 +359,7 @@ return [
     | Enable/Disable sidebar menu search
     |--------------------------------------------------------------------------
     */
-    'enable_menu_search' => true,
+    'enable_menu_search' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -401,15 +400,18 @@ return [
     | Settings for extensions.
     |--------------------------------------------------------------------------
     |
-    | You can find all available extensions here
-    | https://github.com/khairu-aqsara/ezadev-admin
-    |
     */
     'extensions' => [
 
     ],
-    // User Navbar Model Avilable Options simple, full
-    'navbarmode'=>'simple',
-    'copyright' => 'My Admin',
-    'copyright_website' => 'https://github.com/khairu-aqsara/ezadev-admin/'
+
+    /*
+    |--------------------------------------------------------------------------
+    | Settings for Footer Copyright.
+    |--------------------------------------------------------------------------
+    |
+    */
+    'footer' => '&copy; ' . date('Y') . ' Ezadev Allright Reserverd',
+    'footer_link' => 'https://github.com/khairu-aqsara/ezadev-admin',
+    'footer_author' => 'Ezadev'
 ];

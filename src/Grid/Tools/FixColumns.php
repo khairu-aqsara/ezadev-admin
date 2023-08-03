@@ -2,7 +2,6 @@
 
 namespace Ezadev\Admin\Grid\Tools;
 
-use Ezadev\Admin\Admin;
 use Ezadev\Admin\Grid;
 use Illuminate\Support\Collection;
 

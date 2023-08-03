@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "ezadev/ezadev-admin": "~0.5.8"
+        "ezadev/ezadev-admin": "~1.6"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0"

@@ -1,6 +1,6 @@
 {
     "name": "ezadev/admin",
-    "description": "Ezadev admin",
+    "description": "laravel admin Panel from developer to developer",
     "type": "library",
     "keywords": ["laravel", "admin", "grid", "form"],
     "homepage": "https://github.com/khairu-aqsara/ezadev-admin",
@@ -15,7 +15,8 @@
         "php": ">=7.0.0",
         "symfony/dom-crawler": "~3.1|~4.0|~5.0",
         "laravel/framework": ">=5.5",
-        "doctrine/dbal": "2.*"
+        "doctrine/dbal": "2.*|3.*",
+        "ezadev/admin": "@dev"
     },
     "require-dev": {
         "laravel/laravel": ">=5.5",
@@ -32,6 +33,15 @@
             "src/helpers.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Models\\": "tests/models",
+            "Tests\\Controllers\\": "tests/controllers"
+        },
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
     "scripts": {
         "test": "./vendor/bin/phpunit"
     },
@@ -46,6 +56,15 @@
             ],
             "aliases": {
                 "Admin": "Ezadev\\Admin\\Facades\\Admin"
+            }
+        }
+    },
+    "repositories": {
+        "ezadev/admin": {
+            "type": "path",
+            "url": "./ezadev-admin",
+            "options": {
+                "symlink": true
             }
         }
     }

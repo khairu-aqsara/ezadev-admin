@@ -2,7 +2,6 @@
 
 namespace Ezadev\Admin\Grid\Column;
 
-use Ezadev\Admin\Grid\Column;
 use Ezadev\Admin\Grid\Displayers;
 
 trait InlineEditing

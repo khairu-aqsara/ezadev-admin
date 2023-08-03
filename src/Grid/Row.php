@@ -37,7 +37,8 @@ class Row
     protected $key;
 
     /**
-     * Row  Constructor.
+     * Row constructor.
+     *
      * @param mixed $number
      * @param array $data
      * @param mixed $key

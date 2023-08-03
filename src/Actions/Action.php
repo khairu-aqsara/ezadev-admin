@@ -8,12 +8,12 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
 /**
- * @method $this success($title, $text = '', $options = [])
- * @method $this error($title, $text = '', $options = [])
- * @method $this warning($title, $text = '', $options = [])
- * @method $this info($title, $text = '', $options = [])
- * @method $this question($title, $text = '', $options = [])
- * @method $this confirm($title, $text = '', $options = [])
+ * @method $this                success($title, $text = '', $options = [])
+ * @method $this                error($title, $text = '', $options = [])
+ * @method $this                warning($title, $text = '', $options = [])
+ * @method $this                info($title, $text = '', $options = [])
+ * @method $this                question($title, $text = '', $options = [])
+ * @method $this                confirm($title, $text = '', $options = [])
  * @method Field\Text           text($column, $label = '')
  * @method Field\Email          email($column, $label = '')
  * @method Field\Integer        integer($column, $label = '')
@@ -130,7 +130,7 @@ abstract class Action implements Renderable
     public function selector($prefix)
     {
         if (is_null($this->selector)) {
-            return static::makeSelector(get_called_class(), $prefix);
+            return static::makeSelector(get_called_class().spl_object_id($this), $prefix);
         }
 
         return $this->selector;

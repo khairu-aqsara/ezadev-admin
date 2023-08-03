@@ -2,7 +2,6 @@
 
 namespace Ezadev\Admin\Grid;
 
-use Carbon\Carbon;
 use Closure;
 use Ezadev\Admin\Actions\RowAction;
 use Ezadev\Admin\Grid;
@@ -15,9 +14,9 @@ use Illuminate\Support\Str;
 
 class Column
 {
-    use Column\HasHeader,
-        Column\InlineEditing,
-        Column\ExtendDisplay;
+    use Column\HasHeader;
+    use Column\InlineEditing;
+    use Column\ExtendDisplay;
 
     const SELECT_COLUMN_NAME = '__row_selector__';
 
@@ -522,7 +521,7 @@ class Column
                 ($last = array_pop($this->displayCallbacks))
             ) {
                 $last = $this->bindOriginalRowModel($last, $key);
-                $value = call_user_func($last, $previous);
+                $value = call_user_func_array($last, [$previous, $this]);
             }
         }
 
@@ -619,7 +618,7 @@ class Column
     /**
      * Convert characters to HTML entities recursively.
      *
-     * @param array|string $item
+     * @param array|string|null $item
      *
      * @return mixed
      */
@@ -627,10 +626,10 @@ class Column
     {
         if (is_array($item)) {
             array_walk_recursive($item, function (&$value) {
-                $value = htmlentities($value);
+                $value = htmlentities($value ?? '');
             });
         } else {
-            $item = htmlentities($item);
+            $item = htmlentities($item ?? '');
         }
 
         return $item;

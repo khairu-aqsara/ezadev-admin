@@ -527,7 +527,9 @@ class Model
 
         $columnNameContainsDots = Str::contains($columnName, '.');
         $isRelation = $this->queries->contains(function ($query) use ($columnName) {
-            $columnName = Str::snake(Str::before($columnName, '.'));
+            // relationship should be camel case
+            $columnName = Str::camel(Str::before($columnName, '.'));
+
             return $query['method'] === 'with' && in_array($columnName, $query['arguments'], true);
         });
         if ($columnNameContainsDots === true && $isRelation) {
@@ -572,15 +574,12 @@ class Model
     protected function setRelationSort($column)
     {
         list($relationName, $relationColumn) = explode('.', $column);
+        // relationship should be camel case
         $relationName = Str::camel($relationName);
 
         if ($this->queries->contains(function ($query) use ($relationName) {
             return $query['method'] == 'with' && in_array($relationName, $query['arguments']);
         })) {
-            if (!method_exists($this->model, $relationName)) {
-                return;
-            }
-            
             $relation = $this->model->$relationName();
 
             $this->queries->push([

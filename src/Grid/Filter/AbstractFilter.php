@@ -316,10 +316,9 @@ abstract class AbstractFilter
      *
      * @return DateTime
      */
-    public function date($options = [])
+    public function date()
     {
-        $options['format'] = Arr::get($options, 'format', 'YYYY-MM-DD');
-        return $this->datetime($options);
+        return $this->datetime(['format' => 'YYYY-MM-DD']);
     }
 
     /**
@@ -327,10 +326,9 @@ abstract class AbstractFilter
      *
      * @return DateTime
      */
-    public function time($options = [])
+    public function time()
     {
-        $options['format'] = Arr::get($options, 'format', 'HH:mm:ss');
-        return $this->datetime($options);
+        return $this->datetime(['format' => 'HH:mm:ss']);
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace Ezadev\Admin\Grid\Displayers;
 
-use Ezadev\Admin\Admin;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany as Relation;
 use Illuminate\Support\Arr;
 

@@ -5,17 +5,15 @@ namespace Ezadev\Admin\Form\Field;
 class DateMultiple extends Text
 {
     protected static $css = [
-        'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css',
-        'https://cdn.jsdelivr.net/npm/shortcut-buttons-flatpickr@0.3.0/dist/themes/light.min.css',
+        '/vendor/ezadev-admin/flatpickr/dist/flatpickr.min.css',
+        '/vendor/ezadev-admin/flatpickr/dist/shortcut-buttons-flatpickr/themes/light.min.css',
 
     ];
 
     protected static $js = [
-        'https://cdn.jsdelivr.net/npm/flatpickr',
-        'https://cdn.jsdelivr.net/npm/shortcut-buttons-flatpickr@0.1.0/dist/shortcut-buttons-flatpickr.min.js',
-        'https://npmcdn.com/flatpickr@4.6.6/dist/l10n/zh.js',
-
-         
+        '/vendor/ezadev-admin/flatpickr/dist/flatpickr.js',
+        '/vendor/ezadev-admin/flatpickr/dist/shortcut-buttons-flatpickr/shortcut-buttons-flatpickr.min.js',
+        '/vendor/ezadev-admin/flatpickr/dist/l10n/zh.js',
     ];
 
     protected $format = 'YYYY-MM-DD';

@@ -1421,7 +1421,7 @@ class Form implements Renderable
      *
      * @param Closure $callback
      *
-     * @return \Encore\Admin\Form\Footer
+     * @return \Ezadev\Admin\Form\Footer
      */
     public function footer(Closure $callback = null)
     {

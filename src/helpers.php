@@ -185,8 +185,10 @@ if (!function_exists('array_delete')) {
      */
     function array_delete(&$array, $value)
     {
+        $value = \Illuminate\Support\Arr::wrap($value);
+
         foreach ($array as $index => $item) {
-            if ($value == $item) {
+            if (in_array($item, $value)) {
                 unset($array[$index]);
             }
         }
@@ -320,8 +322,8 @@ if (!function_exists('json_encode_options')) {
 }
 
 if (!function_exists('admin_get_route')) {
-    function admin_get_route(string $name): string {
-        return config('admin.route.prefix') . '.' . $name;
+    function admin_get_route(string $name): string
+    {
+        return config('admin.route.prefix').'.'.$name;
     }
 }
-

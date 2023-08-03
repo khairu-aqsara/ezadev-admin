@@ -45,6 +45,7 @@ abstract class Selectable
 
     /**
      * Selectable constructor.
+     *
      * @param $key
      * @param $multiple
      */
@@ -57,7 +58,7 @@ abstract class Selectable
     }
 
     /**
-     * @return Grid
+     * @return void
      */
     abstract public function make();
 

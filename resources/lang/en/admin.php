@@ -42,7 +42,7 @@ return [
     'description'           => 'Description',
     'back'                  => 'Back',
     'back_to_list'          => 'Back to List',
-    'submit'                => 'Save',
+    'submit'                => 'Submit',
     'menu'                  => 'Menu',
     'input'                 => 'Input',
     'succeeded'             => 'Succeeded',

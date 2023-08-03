@@ -7,7 +7,6 @@ use Ezadev\Admin\Actions\GridAction;
 use Ezadev\Admin\Actions\Response;
 use Ezadev\Admin\Actions\RowAction;
 use Ezadev\Admin\Widgets\Form;
-use Ezadev\Admin\Widgets\Selectable\Selectable;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
@@ -154,7 +153,7 @@ class HandleController extends Controller
     public function handleSelectable(Request $request)
     {
         $class = $request->get('selectable');
-        $args  = $request->get('args', []);
+        $args = $request->get('args', []);
 
         $class = str_replace('_', '\\', $class);
 
