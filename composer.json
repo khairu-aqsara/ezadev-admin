@@ -57,14 +57,5 @@
                 "Admin": "Ezadev\\Admin\\Facades\\Admin"
             }
         }
-    },
-    "repositories": {
-        "ezadev/admin": {
-            "type": "path",
-            "url": "./ezadev-admin",
-            "options": {
-                "symlink": true
-            }
-        }
     }
 }
